@@ -31,6 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace('2010â€”built', '2010 - built');
   });
 
+  const whyText = document.querySelector('.why-content .section-text');
+  if (whyText) {
+    whyText.textContent = 'A good project is not only about materials. It depends on clear decisions, responsible supervision, careful sequencing, and a team that explains issues before they become problems.';
+  }
+
+  const footerIntro = document.querySelector('.footer-brand > p');
+  if (footerIntro) {
+    footerIntro.textContent = 'ARAI Architecture & Design supports clients with practical planning, careful construction coordination, and finish-focused delivery for residential and commercial spaces.';
+  }
+
 
   /* ---------- 2. STICKY NAVBAR SHADOW ---------- */
   const navbar = document.getElementById('navbar');
@@ -252,6 +262,72 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  /* ---------- FLOATING CHATBOT ---------- */
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  const chatbotPanel = document.getElementById('chatbotPanel');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatbotMessages = document.getElementById('chatbotMessages');
+  const chatbotForm = document.getElementById('chatbotForm');
+  const chatbotInput = document.getElementById('chatbotInput');
+
+  const chatReplies = {
+    services: 'We handle residential architecture, commercial spaces, renovation, planning, project management, and interior finishing. Share your project type and approximate size so we can suggest the right next step.',
+    estimate: 'For an estimate, we usually need the site location, project type, approximate area, preferred timeline, and any reference ideas or drawings. You can send those details through the contact form or WhatsApp.',
+    timeline: 'Timeline depends on project size, approvals, material selection, and site readiness. Small renovations may move faster, while full builds need proper planning, procurement, and staged execution.',
+    contact: 'You can call +1 (555) 234-7890, email info@araibuilding.com, or message us on WhatsApp using the green button on this page.',
+    default: 'Thanks for your question. For the most accurate answer, please share your project type, location, approximate size, and what you want to achieve. Our team can then guide you with practical next steps.'
+  };
+
+  function addChatMessage(text, type = 'bot'){
+    if (!chatbotMessages) return;
+    const message = document.createElement('div');
+    message.className = `chat-message ${type}`;
+    message.textContent = text;
+    chatbotMessages.appendChild(message);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function getChatReply(text){
+    const value = text.toLowerCase();
+    if (value.includes('service') || value.includes('work') || value.includes('design')) return chatReplies.services;
+    if (value.includes('estimate') || value.includes('quote') || value.includes('cost') || value.includes('price') || value.includes('budget')) return chatReplies.estimate;
+    if (value.includes('time') || value.includes('timeline') || value.includes('duration') || value.includes('long')) return chatReplies.timeline;
+    if (value.includes('contact') || value.includes('call') || value.includes('phone') || value.includes('email') || value.includes('whatsapp')) return chatReplies.contact;
+    return chatReplies.default;
+  }
+
+  function setChatOpen(isOpen){
+    if (!chatbotPanel || !chatbotToggle) return;
+    chatbotPanel.classList.toggle('open', isOpen);
+    chatbotToggle.setAttribute('aria-expanded', isOpen);
+    if (isOpen && chatbotInput) setTimeout(() => chatbotInput.focus(), 150);
+  }
+
+  if (chatbotToggle && chatbotPanel){
+    chatbotToggle.addEventListener('click', () => setChatOpen(!chatbotPanel.classList.contains('open')));
+    chatbotClose.addEventListener('click', () => setChatOpen(false));
+
+    document.querySelectorAll('.chatbot-quick button').forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.question;
+        addChatMessage(button.textContent, 'user');
+        setTimeout(() => addChatMessage(chatReplies[key] || chatReplies.default), 250);
+      });
+    });
+
+    chatbotForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const question = chatbotInput.value.trim();
+      if (!question) return;
+      addChatMessage(question, 'user');
+      chatbotInput.value = '';
+      setTimeout(() => addChatMessage(getChatReply(question)), 250);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatbotPanel.classList.contains('open')) setChatOpen(false);
+    });
+  }
 
   /* ---------- FOOTER YEAR ---------- */
   const yearEl = document.getElementById('year');
