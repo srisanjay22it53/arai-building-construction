@@ -38,6 +38,11 @@
     <a href="#home" class="logo header-logo">
     <img src="images/logo.png" alt="ARAI Logo" class="logo-img header-logo-img">
   </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
     <nav class="nav-links" id="navLinks">
       <a href="#home" class="nav-link active">Home</a>
@@ -53,9 +58,25 @@
 
     <a href="#contact" class="btn btn-primary nav-cta">Get A Quote</a>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- MOBILE MENU START -->
+    
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+    <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+      <nav class="mobile-nav" id="mobileNav">
+        <a class="mobile-link" href="#home">Home</a>
+        <a class="mobile-link" href="#about">About</a>
+        <a class="mobile-link" href="#services">Services</a>
+        <a class="mobile-link" href="#projects">Projects</a>
+        <a class="mobile-link" href="#why-us">Why Us</a>
+        <a class="mobile-link" href="#team">Team</a>
+        <a class="mobile-link" href="#testimonials">Reviews</a>
+        <a class="mobile-link" href="#contact">Contact</a>
+        <a class="btn btn-primary mobile-quote" href="#contact">Get A Quote <i class="fa-solid fa-arrow-right"></i></a>
+      </nav>
+    </aside>
+    <!-- MOBILE MENU END -->
+
   </div>
 </header>
 

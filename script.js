@@ -49,42 +49,75 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* ---------- 3. MOBILE HAMBURGER MENU ---------- */
+  /* ---------- 3. MOBILE HAMBURGER MENU (MOBILE DRAWER) ---------- */
+  // MOBILE MENU START
   const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileNav = document.getElementById('mobileNav');
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+  if (hamburger && mobileDrawer && mobileOverlay && mobileNav) {
+    const getIsOpen = () => mobileDrawer.classList.contains('open');
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape' || !navLinks.classList.contains('open')) return;
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  });
+    const openMenu = () => {
+      if (getIsOpen()) return;
+      mobileDrawer.classList.add('open');
+      mobileOverlay.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+      mobileDrawer.setAttribute('aria-hidden', 'false');
+      mobileOverlay.setAttribute('aria-hidden', 'false');
+    };
 
-  document.addEventListener('click', (e) => {
-    if (!navLinks.classList.contains('open')) return;
-    if (navLinks.contains(e.target) || hamburger.contains(e.target)) return;
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
+    const closeMenu = () => {
+      if (!getIsOpen()) return;
+      mobileDrawer.classList.remove('open');
+      mobileOverlay.classList.remove('open');
       hamburger.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
+      mobileDrawer.setAttribute('aria-hidden', 'true');
+      mobileOverlay.setAttribute('aria-hidden', 'true');
+    };
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = getIsOpen();
+      if (isOpen) closeMenu();
+      else openMenu();
     });
-  });
+
+    // Click outside (overlay) closes.
+    mobileOverlay.addEventListener('click', closeMenu);
+
+    // Escape closes.
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      closeMenu();
+    });
+
+    // Clicking a mobile navigation item closes.
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    // Also close when user clicks outside the drawer (premium UX).
+    document.addEventListener('click', (e) => {
+      if (!getIsOpen()) return;
+      const target = e.target;
+      if (mobileDrawer.contains(target)) return;
+      if (hamburger.contains(target)) return;
+      if (mobileOverlay.contains(target)) return; // overlay click is handled above
+      closeMenu();
+    });
+
+  }
+  // MOBILE MENU END
+
+  /* ---------- 4. ACTIVE NAV LINK ON SCROLL ---------- */
+
 
 
   /* ---------- 4. ACTIVE NAV LINK ON SCROLL ---------- */
