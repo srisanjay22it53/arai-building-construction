@@ -969,7 +969,19 @@ section{ padding:100px 0; }
   .about-img-frame{ display:none; }
   .why-list{ grid-template-columns:1fr; }
   .counters-grid{ grid-template-columns:1fr 1fr; }
+
+  /* Mobile: keep hero text readable and avoid oversized typography */
+  .hero-title{ font-size:2.1rem; }
+  .hero-text{ font-size:1rem; }
+  .hero-text-darkwhite{ font-size:1rem; }
+
+  /* Mobile: make project cards fit and readable */
+  .gallery-grid{ gap:30px; }
+  .gallery-overlay{ padding:16px; }
+  .gallery-tag{ font-size:.65rem; margin-bottom:8px; }
+  .gallery-overlay h3{ font-size:1rem; }
 }
+
 
 @media (max-width: 520px){
   .footer-grid{ grid-template-columns:1fr; gap:34px; }
