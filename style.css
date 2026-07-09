@@ -272,6 +272,75 @@ a.topbar-item:hover{
   background-size: 42px 42px;
   mask-image: linear-gradient(120deg, black, transparent 70%);
 }
+
+/* ---------- HERO-LIKE SECTION BACKGROUNDS (for half-page aesthetic) ---------- */
+.hero-bg-section{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.hero-bg-section img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-overlay-section{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background: linear-gradient(100deg, rgba(12,12,13,.94) 15%, rgba(12,12,13,.72) 55%, rgba(12,12,13,.55) 100%);
+}
+
+.hero-content-front{
+  position:relative;
+  z-index:2;
+}
+.hero-eyebrow{ margin-bottom:18px; opacity:1; animation:none; }
+
+.hero-title-front{
+    color:#ffffff !important;
+    text-transform:none;
+    text-shadow:0 4px 18px rgba(0,0,0,.85);
+}
+.hero-text-front{
+    color:#ffffff !important;
+    font-size:18px;
+    font-weight:500;
+    line-height:1.9;
+    text-shadow:0 2px 10px rgba(0,0,0,.85);
+}
+
+
+.hero-text-darkwhite{
+    color:#ffffff;
+    font-size:18px;
+    font-weight:500;
+    line-height:1.9;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.85),
+        0 0 20px rgba(0,0,0,.45);
+}
+
+.hero-checklist-front li{
+    color:#ffffff !important;
+    font-size:17px;
+    font-weight:600;
+    line-height:1.8;
+    text-shadow:0 2px 10px rgba(0,0,0,.85);
+}
+
+.hero-checklist-front i{
+    color:#f7b900;
+}
+If it still doesn
+.hero-checklist-front i{ color:var(--yellow); }
+.hero-btn-front{ background:var(--yellow); color:var(--black); }
+.hero-btn-front:hover{ background:var(--yellow-dark); }
+
+.about{ position:relative; overflow:hidden; }
+.about .container.about-grid{ position:relative; z-index:2; }
+
 .hero-content{ position:relative; z-index:2; padding:60px 24px; max-width:760px; }
 .eyebrow{
   display:flex; align-items:center; gap:10px; color:var(--yellow);
@@ -331,8 +400,9 @@ section{ padding:100px 0; }
 .about-img-main{ border-radius: var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg); }
 .about-img-main img{ height:520px; object-fit:cover; transition: transform .6s var(--ease); }
 .about-media:hover .about-img-main img{ transform:scale(1.04); }
-.about-img-frame{ position:absolute; top:24px; left:-24px; width:100%; height:100%; border:3px solid var(--yellow); border-radius:var(--radius-lg); z-index:-1; }
-.about-img-badge{
+.about-img-frame{
+    display:none;
+}.about-img-badge{
   position:absolute; bottom:-26px; right:-20px; background:var(--black); color:var(--white);
   padding:20px 26px; border-radius:var(--radius-md); box-shadow:var(--shadow-md);
   display:flex; flex-direction:column; align-items:center; text-align:center;
