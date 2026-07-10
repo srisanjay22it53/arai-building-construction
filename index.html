@@ -11,14 +11,51 @@
 <meta property="og:image" content="images/villa-hero-new.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="images/logo.png">
+<link rel="preload" href="images/villa-hero-new.jpg" as="image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+
+<!-- Structured Data (update URL when domain is finalized) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.araibuilding.com/#business",
+  "name": "ARAI Architecture & Design",
+  "description": "ARAI Architecture & Design provides practical architectural planning, construction coordination, renovation, and project management services with clear budgets, careful supervision, and dependable site execution.",
+  "url": "https://www.araibuilding.com",
+  "telephone": "+15552347890",
+  "email": "info@araibuilding.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "221 Constructor Avenue, Suite 400",
+    "addressLocality": "Metro City",
+    "addressRegion": "ST",
+    "postalCode": "10101",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "07:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/araibuilding",
+    "https://www.instagram.com/araibuilding",
+    "https://www.linkedin.com/company/arai-architecture-design",
+    "https://x.com/araibuilding",
+    "https://www.youtube.com/@araibuilding"
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#home">Skip to main content</a>
 
 <!-- ================= LOADING SCREEN ================= -->
 <!-- preloader removed -->
@@ -83,7 +120,7 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="images/villa-hero-new.jpg" alt="Vaulted wooden ceiling interior with glass railing loft">
+    <img src="images/villa-hero-new.jpg" alt="Vaulted wooden ceiling interior with glass railing loft" fetchpriority="high" width="1440" height="960">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-blueprint" aria-hidden="true"></div>
@@ -109,25 +146,25 @@
   <div class="container counters-grid">
 
     <div class="counter-card reveal-up">
-      <div class="counter-icon">🏗️</div>
+      <div class="counter-icon"><i class="fa-solid fa-building-circle-check" aria-hidden="true"></i></div>
       <div class="counter-value"><span class="counter-num" data-count="500">0</span><span class="counter-plus">+</span></div>
       <p class="counter-label">Projects Completed</p>
     </div>
 
     <div class="counter-card reveal-up">
-      <div class="counter-icon">👷</div>
+      <div class="counter-icon"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i></div>
       <div class="counter-value"><span class="counter-num" data-count="120">0</span><span class="counter-plus">+</span></div>
       <p class="counter-label">Expert Engineers</p>
     </div>
 
     <div class="counter-card reveal-up">
-      <div class="counter-icon">🏆</div>
+      <div class="counter-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
       <div class="counter-value"><span class="counter-num" data-count="15">0</span><span class="counter-plus">+</span></div>
       <p class="counter-label">Years Experience</p>
     </div>
 
     <div class="counter-card reveal-up">
-      <div class="counter-icon">😊</div>
+      <div class="counter-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
       <div class="counter-value"><span class="counter-num" data-count="98">0</span><span class="counter-plus">%</span></div>
       <p class="counter-label">Happy Clients</p>
     </div>
@@ -145,7 +182,7 @@
   <div class="container about-grid">
     <div class="about-media reveal-left">
       <div class="about-img-main">
-        <img src="images/villa-exterior.jpg" alt="Modern cantilevered villa exterior surrounded by greenery">
+        <img src="images/villa-exterior.jpg" alt="Modern cantilevered villa exterior surrounded by greenery" width="800" height="600" loading="lazy" decoding="async">
       </div>
       <div class="about-img-badge">
         <span class="badge-num">15+</span>
@@ -286,15 +323,15 @@
 
     <!-- Filter buttons -->
     <div class="gallery-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="residential">Residential</button>
-      <button class="filter-btn" data-filter="commercial">Commercial</button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="residential" aria-pressed="false">Residential</button>
+      <button class="filter-btn" data-filter="commercial" aria-pressed="false">Commercial</button>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
 
       <div class="gallery-item reveal-up" data-category="residential">
-        <img src="images/villa-exterior.jpg" alt="Modern residential villa architecture">
+        <img src="images/villa-exterior.jpg" alt="Modern residential villa architecture" width="800" height="620" loading="lazy" decoding="async">
         <div class="gallery-overlay">
           <span class="gallery-tag">Residential</span>
           <h3>Maple Ridge Residence</h3>
@@ -302,7 +339,7 @@
       </div>
 
       <div class="gallery-item reveal-up" data-category="commercial">
-        <img src="images/villa-kitchen.jpg" alt="Commercial interior fit-out with custom cabinetry">
+        <img src="images/villa-kitchen.jpg" alt="Commercial interior fit-out with custom cabinetry" width="800" height="620" loading="lazy" decoding="async">
         <div class="gallery-overlay">
           <span class="gallery-tag">Commercial</span>
           <h3>Horizon Business Tower</h3>
@@ -310,7 +347,7 @@
       </div>
 
       <div class="gallery-item reveal-up" data-category="commercial">
-        <img src="images/619608286_18036913748755551_3562692949552519706_n.webp" alt="Riverside commercial project exterior">
+        <img src="images/619608286_18036913748755551_3562692949552519706_n.webp" alt="Riverside commercial project exterior" width="800" height="620" loading="lazy" decoding="async">
         <div class="gallery-overlay">
           <span class="gallery-tag">Commercial</span>
           <h3>Riverside Steel Frame</h3>
@@ -318,7 +355,7 @@
       </div>
 
       <div class="gallery-item reveal-up" data-category="residential">
-        <img src="images/villa-stairs.jpg" alt="Interior renovation with modern staircase design">
+        <img src="images/villa-stairs.jpg" alt="Interior renovation with modern staircase design" width="800" height="620" loading="lazy" decoding="async">
         <div class="gallery-overlay">
           <span class="gallery-tag">Renovation</span>
           <h3>Downtown Loft Remodel</h3>
@@ -326,7 +363,7 @@
       </div>
 
       <div class="gallery-item reveal-up" data-category="commercial">
-        <img src="images/SaveClip.App_655389546_18088327295272975_1864402280013582498_n.jpg" alt="Large scale building site with modern architecture">
+        <img src="images/SaveClip.App_655389546_18088327295272975_1864402280013582498_n.jpg" alt="Large scale building site with modern architecture" width="800" height="620" loading="lazy" decoding="async">
         <div class="gallery-overlay">
           <span class="gallery-tag">Commercial</span>
           <h3>Crane Point Complex</h3>
@@ -335,7 +372,7 @@
 
 
       <div class="gallery-item reveal-up" data-category="residential">
-    <img src="images/villa-hero-new.jpg" alt="Modern luxury residence">
+    <img src="images/villa-hero-new.jpg" alt="Modern luxury residence" width="800" height="620" loading="lazy" decoding="async">
     <div class="gallery-overlay">
         <span class="gallery-tag">Residential</span>
         <h3>Cedar Hills Estate</h3>
@@ -367,7 +404,7 @@
     </div>
 
     <div class="why-media reveal-right">
-      <img src="images/632319569_18510575029075384_3968617085993107716_n.heic" alt="A-frame cabin interior with large windows">
+      <img src="images/villa-aframe.jpg" alt="A-frame cabin interior with large windows" width="800" height="600" loading="lazy" decoding="async">
       <div class="why-media-card">
         <i class="fa-solid fa-quote-left"></i>
         <p>"Every site decision is reviewed for safety, durability, and the quality the client expects."</p>
@@ -390,7 +427,7 @@
 
       <div class="team-card reveal-up">
         <div class="team-photo">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Arjun Rao, Founder and CEO">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Arjun Rao, Founder and CEO" width="300" height="340" loading="lazy" decoding="async">
           <div class="team-social">
             <a href="https://www.linkedin.com/company/arai-architecture-design" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://x.com/araibuilding" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
@@ -403,7 +440,7 @@
 
       <div class="team-card reveal-up">
         <div class="team-photo">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1976&auto=format&fit=crop" alt="Portrait of Meera Iyer, Chief Site Engineer">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1976&auto=format&fit=crop" alt="Portrait of Meera Iyer, Chief Site Engineer" width="300" height="340" loading="lazy" decoding="async">
           <div class="team-social">
             <a href="https://www.linkedin.com/company/arai-architecture-design" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://x.com/araibuilding" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
@@ -416,7 +453,7 @@
 
       <div class="team-card reveal-up">
         <div class="team-photo">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" alt="Portrait of David Chen, Lead Architect">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" alt="Portrait of David Chen, Lead Architect" width="300" height="340" loading="lazy" decoding="async">
           <div class="team-social">
             <a href="https://www.linkedin.com/company/arai-architecture-design" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://x.com/araibuilding" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
@@ -429,7 +466,7 @@
 
       <div class="team-card reveal-up">
         <div class="team-photo">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Priya Nair, Project Manager">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Priya Nair, Project Manager" width="300" height="340" loading="lazy" decoding="async">
           <div class="team-social">
             <a href="https://www.linkedin.com/company/arai-architecture-design" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://x.com/araibuilding" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
@@ -459,7 +496,7 @@
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p>"The team explained the drawings clearly, kept us informed during the work, and handled changes without confusion. The final finish felt exactly like what we had approved."</p>
           <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Sarah Thompson">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Sarah Thompson" width="52" height="52" loading="lazy" decoding="async">
             <div>
               <h4>Sarah Thompson</h4>
               <span>Homeowner, Maple Ridge</span>
@@ -471,7 +508,7 @@
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p>"Our office fit-out needed coordination between electrical, ceiling, flooring, and furniture teams. ARAI kept the work organized and helped us open without unnecessary delay."</p>
           <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Michael Rivera">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Michael Rivera" width="52" height="52" loading="lazy" decoding="async">
             <div>
               <h4>Michael Rivera</h4>
               <span>Director, Horizon Retail Group</span>
@@ -483,7 +520,7 @@
           <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p>"What stood out was the clarity. We knew what was included, what decisions were pending, and how each choice affected the budget before work moved forward."</p>
           <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Anita Desai">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1974&auto=format&fit=crop" alt="Portrait of Anita Desai" width="52" height="52" loading="lazy" decoding="async">
             <div>
               <h4>Anita Desai</h4>
               <span>Owner, Cedar Hills Estate</span>
@@ -577,7 +614,8 @@
         </div>
         <div class="form-group">
           <label for="service">Service Needed</label>
-          <select id="service" name="service">
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
             <option value="residential">Residential Architecture &amp; Design</option>
             <option value="commercial">Commercial Architecture &amp; Design</option>
             <option value="renovation">Renovation &amp; Remodeling</option>

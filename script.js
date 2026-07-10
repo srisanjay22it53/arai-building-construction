@@ -14,15 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     img.decoding = img.decoding || 'async';
   });
 
-  document.querySelectorAll('.counter-icon').forEach((icon, index) => {
-    const icons = [
-      'fa-building-circle-check',
-      'fa-helmet-safety',
-      'fa-award',
-      'fa-handshake'
-    ];
-    if (icons[index]) icon.innerHTML = `<i class="fa-solid ${icons[index]}" aria-hidden="true"></i>`;
-  });
+
+
 
   document.querySelectorAll('span, p').forEach(el => {
     if (el.childElementCount > 0) return;
@@ -180,8 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
+      filterButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.getAttribute('data-filter');
       let visibleCount = 0;
